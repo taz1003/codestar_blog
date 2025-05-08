@@ -1,8 +1,8 @@
-from django import forms
 from .models import CollaborateRequest
+from django import forms
 
 
-class CollaborateRequest(forms.ModelForm):
+class CollaborateForm(forms.ModelForm):
     class Meta:
-        model: CollaborateRequest
+        model = CollaborateRequest
         fields = ('name', 'email', 'message')
