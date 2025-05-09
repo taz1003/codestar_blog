@@ -23,6 +23,12 @@ def post_detail(request, slug):
 
     ``post``
         An instance of :model:`blog.Post`.
+    ``comments``
+        A list of :model:`blog.Comment` instances related to the post.
+    ``comment_count``
+        The number of comments related to the post.
+    ``comment_form``
+        An instance of :model:`blog.CommentForm`.
 
     **Template:**
 
@@ -61,7 +67,19 @@ def post_detail(request, slug):
 
 def comment_edit(request, slug, comment_id):
     """
-    view to edit comments
+    View to edit comment
+    Display an individual :model:`blog.Comment`.
+    **Context**
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comment``
+        An instance of :model:`blog.Comment`.
+    ``comment_form``
+        An instance of :model:`blog.CommentForm`.
+    **Template:**
+    :template:`blog/post_detail.html`
+    **Note:**
+    The comment can only be edited by the author of the comment.
     """
     if request.method == "POST":
 
@@ -86,7 +104,17 @@ def comment_edit(request, slug, comment_id):
 
 def comment_delete(request, slug, comment_id):
     """
-    view to delete comment
+    View to delete comment
+    Display an individual :model:`blog.Comment`.
+    **Context**
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comment``
+        An instance of :model:`blog.Comment`.
+    **Template:**
+    :template:`blog/post_detail.html`
+    **Note:**
+    The comment can only be deleted by the author of the comment.
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)

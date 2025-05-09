@@ -8,6 +8,11 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class Post(models.Model):
+    """
+    Stores a single blog post entry related to a :model:`auth.User`.
+    Each post has a title, slug, author, featured image, content,
+    created date, status, excerpt, and updated date.
+    """
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -28,6 +33,11 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    """
+    Stores a single comment related to a :model:`blog.Post`.
+    Each comment has a post, author, body, approved status,
+    and created date.
+    """
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments"
     )

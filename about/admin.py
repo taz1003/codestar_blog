@@ -17,5 +17,8 @@ class AboutAdmin(SummernoteModelAdmin):
 
 @admin.register(CollaborateRequest)
 class CollaborateRequestAdmin(admin.ModelAdmin):
-
+    """
+    Custom admin panel for the CollaborateRequest model.
+    Displays the message and read status of each request.
+    """
     list_display = ('message', 'read',)
